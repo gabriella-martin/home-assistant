@@ -10,3 +10,17 @@ API_KEY = secrets['google_api_key']
 START = secrets['start']
 DESTINATION = secrets['destination']
 
+mode = 'transit'
+
+def get_route(url, params):
+    response = requests.get(url, params=params)
+    print(response.json())
+
+params = {
+    'origin': START,
+    'destination': DESTINATION,
+    'mode': mode,
+    'key': API_KEY
+}
+
+get_route(BASE_URL, params)
